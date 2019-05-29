@@ -1,0 +1,30 @@
+{
+    "name": "iex-graphql",
+    "version": 2,
+    "env": {
+      "IEX_PUBLIC": "@iexcloud-public-key"
+    },
+    "builds": [
+      { "src": "api/gql/index.js", "use": "@now/node" }
+    ],
+    "routes": [
+        {
+          "src": "/api/(.*)",
+          "dest": "/api/$1"
+        },
+        {
+          "src": "/redirect-test",
+          "status": 302,
+          "headers": {
+            "location": "https://google.com"
+          }
+        },
+        {
+          "src": "/(.*)",
+          "dest": "/www/$1",
+          "headers": {
+            "x-request-path": "$1"
+          }
+        }
+    ]
+}

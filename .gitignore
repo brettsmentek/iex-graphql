@@ -1,0 +1,4 @@
+.env
+.now
+www/.next
+**/node_modules
